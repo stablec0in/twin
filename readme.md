@@ -21,3 +21,10 @@ https://app.burrbear.io/#/berachain/pool/0x8213bb9c018edc0295b177278aeaa1a704f12
 
 Donc le code ne peux pas s'adapter facilement, il faut changer le contrat qui fait les swaps. Je pense le mieux c'est de faire un mini-agrégateur qui permet de swap facilement.
 
+Concrétement la fonction exec(...) du contrat fait les actions suivante : 
+
+1. appelle le protocol berraborrow pour obtenir un flashloan en un stable coin nect (0.05% de fees).
+2. swap nect to usdc sur buurbear protocol.
+3. mint les tokens NVDA et iNVA avec les usdc recu.
+4. swap de NVDA et iNVDA en nect sur buurbear protocol.
+5. reboursement de la dette du flash loan et envoie le reste des nect sur le wallet owner.
