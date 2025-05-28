@@ -32,24 +32,6 @@ contract Manager is IERC3156FlashBorrower {
     address public owner;
 
 
-    struct Asset {
-        string name;
-        address assets;
-        address iassets;
-        address pool;
-        address ipool;
-        address stable;
-        address swapper;
-    }
-
-    Asset[] Assets;
-
-    function addAssets(bytes memory datas) external {
-        (string memory name,address assets,address iassets,address pool,address ipool,address stable,address swapper) = 
-                abi.decode(datas, (string,address,address,address,address,address,address));
-        Asset memory asset =  Asset(name,assets,iassets,pool,ipool,stable,swapper);
-        Assets.push(asset);
-    }
 
     // flash loan de nect
     IERC3156FlashLender public lender = IERC3156FlashLender(0x1cE0a25D13CE4d52071aE7e02Cf1F6606F4C79d3);
