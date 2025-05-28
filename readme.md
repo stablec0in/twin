@@ -16,7 +16,12 @@ et il va recevoir a / u des deux tokens.
 
 2. on peut également redem des usdc en apportant une quantité équivalente de NVDA et iNVDA mais ici y'a un 2% de fee.
 
-Dans le contrat manager :
+Dans le contrat manager : j'ai juste fait la strétégie 1 pour NVDA, il y a 3 autres assets a faire mais y'a un truc a prendre en compte c'est que 2 assets sont dans des pools sur le dex kodiac et 2 autres sont sur des pools sur
+https://app.burrbear.io/#/berachain/pool/0x8213bb9c018edc0295b177278aeaa1a704f123ab000200000000000000000018
+
+Donc le code ne peux pas s'adapter facilement, il faut changer le contrat qui fait les swaps.
+
+
 
 
 
