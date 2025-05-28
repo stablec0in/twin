@@ -23,7 +23,7 @@ Donc le code ne peux pas s'adapter facilement, il faut changer le contrat qui fa
 
 Concrétement la fonction exec(...) du contrat fait les actions suivante : 
 
-1. appelle le protocol berraborrow pour obtenir un flashloan en un stable coin nect (0.05% de fees).
+1. appelle le protocol berraborrow pour obtenir un flashloan en un stable coin nect (0.05% de fees). Celui appelle la fonction  onflashloan de contrat qui l'appelle (callback) en lui renvoie les fonds, et les infos. 
 2. swap nect to usdc sur buurbear protocol.
 3. mint les tokens NVDA et iNVA avec les usdc recu.
 4. swap de NVDA et iNVDA en nect sur buurbear protocol.
