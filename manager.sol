@@ -100,7 +100,7 @@ contract Manager is IERC3156FlashBorrower {
         nect.approve(address(swapper), amount);
         uint256 usdc_amount = swapper.nect_to_usdc(amount);
 
-        // Exemple de décodage des données passées
+        // décodage des données envoyé dans les datas 
         (string memory name, address asset, address iasset, bytes32 id, bytes32 iid) =
                          abi.decode(data, (string,address,address,bytes32,bytes32));
 
@@ -110,6 +110,9 @@ contract Manager is IERC3156FlashBorrower {
 
         IERC20(asset).approve(address(swapper), mintedAmount);
         IERC20(iasset).approve(address(swapper), mintedAmount);
+        
+        // swap les deux tokens en nect
+        
         swapper.swap(asset, iasset, id, iid, mintedAmount);
 
         uint256 totalDebt = amount + fee;
@@ -118,7 +121,6 @@ contract Manager is IERC3156FlashBorrower {
             revert InsufficientBalance(nect.balanceOf(address(this)), totalDebt);
         }
         nect.approve(address(lender), totalDebt);
-        // Tu peux renvoyer ce hash pour signaler le succès
         return keccak256("ERC3156FlashBorrower.onFlashLoan");
     }
 }
